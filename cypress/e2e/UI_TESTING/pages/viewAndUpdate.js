@@ -12,6 +12,9 @@ class viewAndUpdate {
     cartProduct(){
         cy.get(':nth-child(5) > .btn').click();
     }
+    viewCart(){
+        cy.get('u').click();
+    }
     
 }
 

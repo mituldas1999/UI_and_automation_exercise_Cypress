@@ -3,12 +3,16 @@ import SignupPage from '../pages/SignupPage';
 import AccountInfo from '../pages/accountInfo';
 import homePage from '../pages/homePage';
 import viewAndUpdate from '../pages/viewAndUpdate';
+import checkOut from '../pages/checkOut';
+import PaymentPage from '../pages/paymentPage';
 
 describe('Signup and Account Info Flow', () => {
   const signupPage = new SignupPage();
   const accountInfo = new AccountInfo();
   const HomePage = new homePage();
-  const viewAndUpdateInstance = new viewAndUpdate(); // Create an instance of the class
+  const viewAndUpdateInstance = new viewAndUpdate();
+  const checkOutInstance = new checkOut();
+  const PaymentPageInstance=new PaymentPage();
 
   before(() => {
     // Global setup code, if any, to run before all tests
@@ -62,12 +66,22 @@ describe('Signup and Account Info Flow', () => {
     // Optionally, click on continue button if present
     accountInfo.continueBTN();
     HomePage.navigateCategory();
-    cy.wait(3000);
     HomePage.jeansCategory();
 
-    cy.wait(2000);
     viewAndUpdateInstance.viewProduct(); // Use the instance to call the method
     viewAndUpdateInstance.changeQuantity();
     viewAndUpdateInstance.cartProduct();
+    viewAndUpdateInstance.viewCart();
+
+    checkOutInstance.proceedToCheckout();
+    checkOutInstance.placeOrder();
+
+
+    PaymentPageInstance.fillCardName();
+    PaymentPageInstance.fillCardNumber();
+    PaymentPageInstance.fillCVC();
+    PaymentPageInstance.fillExpirationDate();
+    PaymentPageInstance.submitPayment();
+    PaymentPageInstance.downloadInvoice();
   });
 });
