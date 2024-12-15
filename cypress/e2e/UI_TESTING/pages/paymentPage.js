@@ -36,6 +36,9 @@ class PaymentPage {
     downloadInvoice(){
         cy.get('.col-sm-9 > .btn-default').click()
     }
+    continueBTN(){
+        cy.get('[data-qa="continue-button"]').click()
+    }
 }
 
 export default PaymentPage;

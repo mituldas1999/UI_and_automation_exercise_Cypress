@@ -5,6 +5,7 @@ import homePage from '../pages/homePage';
 import viewAndUpdate from '../pages/viewAndUpdate';
 import checkOut from '../pages/checkOut';
 import PaymentPage from '../pages/paymentPage';
+import ContactPage from '../pages/contactPage';
 
 describe('Signup and Account Info Flow', () => {
   const signupPage = new SignupPage();
@@ -13,6 +14,7 @@ describe('Signup and Account Info Flow', () => {
   const viewAndUpdateInstance = new viewAndUpdate();
   const checkOutInstance = new checkOut();
   const PaymentPageInstance=new PaymentPage();
+  const contactPageInstance=new ContactPage();
 
   before(() => {
     // Global setup code, if any, to run before all tests
@@ -83,5 +85,17 @@ describe('Signup and Account Info Flow', () => {
     PaymentPageInstance.fillExpirationDate();
     PaymentPageInstance.submitPayment();
     PaymentPageInstance.downloadInvoice();
+    PaymentPageInstance.continueBTN()
+
+
+    contactPageInstance.clickContractPage();
+    contactPageInstance.fillName();
+    contactPageInstance.fillEmail();
+    contactPageInstance.fillSubject();
+    contactPageInstance.fillMessage();
+    contactPageInstance.attachFile();
+    contactPageInstance.submitForm();
+    contactPageInstance.verifySuccessMessage();
+    contactPageInstance.HomeBTN();
   });
 });
