@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'; // Correct import for Faker v8
+import { faker } from '@faker-js/faker';
 import SignupPage from '../pages/SignupPage';
 import AccountInfo from '../pages/accountInfo';
 import homePage from '../pages/homePage';
